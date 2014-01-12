@@ -1,0 +1,51 @@
+Installation:
+Like every other wordpress theme: copy the Design Showcase folder to your wordpress theme folder and activate it in your admin panel under "Design"
+
+Usage:
+The theme comes with an extra administration page. Here you can define which of the jQuery options should be enabled, which category should be used as sidebar news, if the favorite posts function should be enabled and you can enter your google analytics code here.
+You also define here which pages should be displayed in the main menu.
+
+To make the theme look like the themeforest preview you have to use the build in widgets and apply them to the appropriate widgeta areas:
+
+The Theme comes with 3 Widgets:
+1.) Front End Login Widget: if you want users to be able to login from every page this widget makes it possible. After loggin in the user will be redirected to the same page and his/her personal favorite posts will be displayed. Users can then flag posts they like as favorite posts. Attention: This function must be enabled in the in the Design Showcase Options Panel
+
+
+2.) Sidebar News: A sidebar widget for displaying non showcase News. You can define which category should be displayd by entering the categorys number. Attention: to make Sidebar News work properly you must also enter the category number in the Design Showcase Options Page
+
+
+4.) Advertise Widget: here you can directly edit which adds you want to display with image and link for three adertisers. (each image has to be 125px x 125px) Be aware that the widget is a single use only widget. if you want to use more then the 3 blocks i would sugest either to copy the html output and directly write it so sidebar.php or get a more advanced plugin at wordpress.org
+
+
+In addition to these options each post has an extra advanced option field now. So if you write a new post or edit an existing one you will find a new tab called "Design Showcase Images". 
+
+Here you have to enter one url for the preview image, one for the tooltip hover, and the direct link to the item you are writing about.
+
+
+The theme comes with some psd items in case you want to change the text of some of the buttons. font for search and archive button is Volter goldfish, downloadable at http://www.dafont.com/volter-goldfish.font
+
+
+
+
+Update: 07.02.2009
+
+Added wordpress 2.7 support for login/out function: hat do edit functions.php and comments.php
+Improved javscript and the passing of parameters to the script: hat to change header.php and custom.js (custom.js.php is no longer used)
+
+
+
+
+RATING OF POSTS: Ajax star rating
+Ive implemented basic support for the wp-postRatingplugin by Lester Chan
+
+
+you can download it at his homepage: http://lesterchan.net/wordpress/readme/wp-postratings.html
+or from wordpress plugin repository: http://wordpress.org/extend/plugins/wp-postratings/
+
+after downloading unzip the plugin file and open the wp-postratings/images folder. If you want to have the same stars as i have in my preview exchange the items in folder stars_crystal with the one that I have put into the themeforest download file. Now upload the plugin, activate it and choose this icon set from the options page (its the only one with a dark background) Thats it ;)
+
+Thats it.
+
+
+
+www.wpteam.ru
