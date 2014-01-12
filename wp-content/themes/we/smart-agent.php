@@ -1,28 +1,101 @@
 <?php //get the user_meta(current user) and set the initial (default) value of the select)  ?>
-
-		<?php  if ( $_GET['link'] == 'SA'){ ?>
-        
-        <form action="#" method="get">
-        	
-             <?php  $available_users  = wp_dropdown_users( array('name'=>'sa_followed_users',  ))?>
-			
-   			 <?php $location = wp_dropdown_categories('hierarchical=1&show_option_none=select location1&taxonomy=event-categories&hide_empty=0&name=location1'); ?>
-             <?php $location = wp_dropdown_categories('hierarchical=1&show_option_none=select location2&taxonomy=event-categories&hide_empty=0&name=location2'); ?>
-             <?php $location = wp_dropdown_categories('hierarchical=1&show_option_none=select location3&taxonomy=event-categories&hide_empty=0&name=location3'); ?>
-             
-             <?php $event_types = wp_dropdown_categories('hierarchical=1&show_option_none=select event_type&taxonomy=event_type&hide_empty=0&name=event_type'); ?>
-			
-    		<input name="Send" type="submit" value="Success" />
-       </form>
-       <?php } ?>        
-<?php
+<?php 
 
 $user_id = get_current_user_id();
+$arrUserData = get_metadata('user', $user_id); 
+	
+ if ($_GET['link'] == 'SA'){ ?>
+        
+<form action="#" method="get">
+        
+<?php  	
+/**********************************************************************************************************************************************/
+	
+				if ($arrUserData['sa_followed_users'][0] != -1){
+					$user = $arrUserData['sa_followed_users'][0];
+					//$userdata = get_userdata( $user );
+					//$selected_user = $userdata->display_name;
+					$available_users  = wp_dropdown_users('name=sa_followed_users&selected='.$user);
+				}
+				else{
+					$available_users  = wp_dropdown_users('name=sa_followed_user');
+				}          
+				
+/**********************************************************************************************************************************************/
+			 
+			 $k = 1;
+			 while($k<=3){	
+				if ($arrUserData['sa_location'.$k][0] != -1){
+					
+					$type_id = $arrUserData['sa_location'.$k][0];
+					$taxonomy = 'event-categories';
+					//$term = get_term( $type_id, $taxonomy );
+					//$selected_type = $term->name;				
+					$location = wp_dropdown_categories('hierarchical=1&selected='.$type_id.'&taxonomy=event-categories&hide_empty=0&name=location'.$k);  
+				}
+				else{
+                	$location = wp_dropdown_categories('hierarchical=1&show_option_none=select location'.$k.'&taxonomy=event-categories&hide_empty=0&name=location'.$k);  
+				}
+				$k ++;
+			 }	
+				
+/**********************************************************************************************************************************************/
+
+				if ($arrUserData['sa_event_type'][0] != -1){
+					
+					$type_id = $arrUserData['sa_event_type'][0];
+					//$taxonomy = 'event_type';
+					//$term = get_term( $type_id, $taxonomy );
+					//$selected_type = $term->name;
+					$event_types = wp_dropdown_categories('hierarchical=1&selected='.$type_id.'&taxonomy=event_type&hide_empty=0&name=event_type'); 
+				}
+				else{
+                	$event_types = wp_dropdown_categories('hierarchical=1&show_option_none=select event_type&taxonomy=event_type&hide_empty=0&name=event_type'); 
+				}
+				
+/**********************************************************************************************************************************************/
+				
+				$categories = get_categories('hide_empty=0&hierarchical=1&show_option_none'); 
+				echo '<div style="width: 95%; min-height: 250px; display: inline-block;">';
+				
+				foreach ($categories as $cat){
+					$printed = true; 
+					if ( is_array($arrUserData['sa_categories']) ){
+							$arrCategoriesIds = explode("," , $arrUserData['sa_categories'][0]);
+
+							$checkedValue = $cat->term_id;
+							foreach ($arrCategoriesIds as $checked){
+								if( $checked == $checkedValue){
+									$printed = false;
+									echo '<div style="float:right; border: 1px solid #363636; padding:10px; margin: 20px; width: 150px;">
+									<input checked="checked" type="checkbox" name="categories[]" value="'.$cat->term_id.'">
+									<span style="padding: 0 5px;">'.$cat->name.'</span></div>';
+								}	
+							}
+								if($printed){		
+									echo '<div style="float:right; border: 1px solid #363636; padding:10px; margin: 20px; width: 150px;">
+									<input type="checkbox" name="categories[]" value="'.$cat->term_id.'">
+									<span style="padding: 0 5px;">'.$cat->name.'</span></div>';
+								}
+					}
+					else{
+						echo '<div style="float:right; border: 1px solid #363636; padding:10px; margin: 20px; width: 150px;">
+						<input type="checkbox" name="categories[]" value="'.$cat->term_id.'">
+						<span style="padding: 0 5px;">'.$cat->name.'</span></div>';
+					}
+				}
+				
+				echo '</div>';	 
+/**********************************************************************************************************************************************/
+?>              
+	<input name="Send" type="submit" value="Success" />
+</form>
+
+<?php 	}         
+
 $i = 1; 
 	if ( $user_id )
 			{
-				
-			
 						 if ( $_GET["Send"]=='Success')
 							 {		
 								//*********************PREFFER LECTORS***********************//
@@ -52,9 +125,10 @@ $i = 1;
 								
 								//*********************CATEGORY****************************//			
 										
-												$meta_key = 'sa_categories';
-												$new_value = '15';
-												
+												$meta_key = 'sa_categories';        
+												$new_value = $_GET["categories"];				 
+												$new_value = implode($new_value, ",");
+
 												update_user_meta( $user_id, $meta_key, $new_value );
 							}
 		}					
@@ -68,7 +142,8 @@ $arrUserData = get_metadata('user', $user_id);
 
 $arrFollowedUsers=$arrUserData['sa_followed_users'];
 
-$arrCategoriesIds = $arrUserData['sa_categories'];
+$arrCategoriesIds = $arrUserData['sa_categories'];   
+$arrCategoriesIds = explode("," , $arrUserData['sa_categories'][0]);
 
 $arrEventTypeId = $arrUserData['sa_event_type'];
 
@@ -79,12 +154,11 @@ foreach($arrLocationsIds as $key=>$value){
 	}	
 }
 
-//show($arrLocationsIds);
+//show($arrCategoriesIds); die;
 if ( is_array($arrFollowedUsers))
 	{
 		$arrFollowedUsers = implode($arrFollowedUsers);
-	}
-	
+	}	
 
 $args = array(
 	'author' => $arrFollowedUsers,	
@@ -101,7 +175,6 @@ $args = array(
 		array(
 				'taxonomy'=>'event_type',
 				'field'=>'id',
-
 				'terms'=> $arrEventTypeId,
 			 ) 
 	)
@@ -116,19 +189,19 @@ $query = new WP_Query( $args );
 //var_dump($query);
 
     if ( ! $query->have_posts() ){
-		show('ido');
+		//show('ido');
 		echo 'no post SA</br>';
 		return $content;
 	}
 	
     $content .= '<h3>All Events</h3>';
-    $content .= '<ul>'; 
+   // $content .= '<ul>'; 
 	
 	$table_row.='<table>';
 
 		while ( $query->have_posts() ) :
 			$query->the_post();
-			$content .= '<li>'.get_the_title().'</li>';		
+			//$content .= '<li>'.get_the_title().'</li>';		
 
 		
 /************************************TABLE ROW*******************************************/
@@ -144,7 +217,7 @@ $query = new WP_Query( $args );
     endwhile;
 	
 	$table_row.='</table>';
-    $content .= '</ul>';
+    //$content .= '</ul>';
     // Importent
 	echo $content;
 	echo $table_row;

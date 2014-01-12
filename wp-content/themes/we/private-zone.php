@@ -4,7 +4,7 @@ Template Name: Private Zone
 */	
 					get_header(); ?>
 
-	<div id="primary" class="content-area">
+	<div id="private-zone" class="content-area">
 		<div id="content" class="site-content" role="main">
         	<h1><?php the_title(); ?></h1>
             
@@ -30,12 +30,9 @@ Template Name: Private Zone
 
 						echo '<h2>אירועים שנרשמתי</h2>';
 						do_shortcode('[my_bookings limit=3]');
-						
+
 						echo '<h2>אירועים של הסוכן החכם</h2>';
-
-				
-
-						include 'wp-content\plugins\events-manager\templates\templates\events-list.php';
+						include 'smart-agent.php';
 					}
 					elseif( $_GET['link'] == 'created'){
 						echo '<h1>אירועים שיצרתי</h1>';
