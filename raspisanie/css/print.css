@@ -1,0 +1,41 @@
+html, body {margin:0; padding:0}
+body {background:white; color:black; margin:25px 25px 25px 25px;}
+a {color:black; text-decoration:underline} a img {border:0}
+div.p, form, table, p, h1, h2, h3 {padding:0 0 18px 0; margin:0;}
+ul, ol {padding-top:0; margin-top:0; padding-bottom:18px; margin-bottom:0}
+h2, p, textarea, input, select, body, form {font:12px/15px Tahoma, Arial, Verdana, sans-serif;}
+p {text-align:justify}
+h1 {font-size:16px;text-align: center}
+h2 {font-weight:bold}
+
+.tab_obsh  {border-collapse:collapse; width:99%; border:1px solid black;font-size:8pt;text-align:left;padding:2px}
+ /*table td.tab{border:2px solid black; width:99%; text-align:left; padding:2px}*/
+
+hr {color:black; height:1px; background:black; margin-bottom:18px}
+label span {text-decoration:underline}
+div.hidden {visibility:hidden}
+
+/*
+body,td,th,TD, TH,tr {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size: 10px;
+color: #000000;
+}*/
+
+#printdocument:link,  #printdocument:visited {color:#116CAC; text-decoration:none} #printdocument:hover {color:#116CAC; text-decoration:underline} #printdocument:active {color:#FF6633; text-decoration:underline}
+#printdocument {margin-left:20px}
+
+#printversion {float:right; padding:4px 80px}
+#printversion a {font-size:11px; color:#333333}
+
+.skrit  {display:none;}
+.redact {display:none;}
+.pechat{color:red;}
+
+.slidedown_content  {display:none}
+.slidedown_top  {display:none}
+.content  {display:none}
+.printversion{display:inline;}
+
+.black  { border:0px solid blue;}
+.contextMenu  {display:none}

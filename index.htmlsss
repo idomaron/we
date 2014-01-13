@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//RU">
+<html lang="ru">
+<meta  charset="UTF-8" />
+<style>
+.genfon
+{
+	float: right; 
+				font-size: 23px; 
+				line-height: 24px; 
+				margin: 15% 45%;
+                background: #f2f2f2; 
+				padding-top: 8px;
+				border: 6px solid #EDE35C;
+				color: rgb(230, 230, 230);					
+				text-shadow: 0px -1px 0px rgba(30, 30, 30, 0.8);
+				-webkit-border-radius: 30px;
+				-moz-border-radius: 30px;
+				border-radius:15px;
+				-webkit-box-shadow: 0px 2px 2px rgba(50, 50, 50, 0.75);
+				-moz-box-shadow:    0px 2px 2px rgba(50, 50, 50, 0.75);
+				box-shadow:         0px 2px 2px rgba(50, 50, 50, 0.75);}
+}
+</style>
+<html>
+<body bgcolor="#FFFFFF">
+<p class="genfon">
+			 <a href="http://genfon.org" title="Genfon Production - Отличное решение для бизнеса" alt="Coздание сайта, разработка сайта, cайт для бизнеса, хочу свой сайт" data-placement="left" style="color: #d43400;">
+			 <img src="/logo-small.png" style="height: 50px; padding: 0; margin: -10px 0 1px 0;" alt="Coздание сайта, разработка сайта, cайт для бизнеса, хочу свой сайт"  />
+             </a>
+</p>
+</body>
+</html>
