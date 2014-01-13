@@ -13,6 +13,14 @@
 
 /* =Theme customization starts here
 -------------------------------------------------------------- */
+#article-home{
+	border: 1px solid #03C;
+	border-radius: 5px;
+	display: inline-block;
+	float: left;
+	margin: 10px 25px; 
+	padding: 5px;
+}
 #private-zone{
 	padding: 20px;
 	width: 95%;
@@ -30,6 +38,7 @@
 	width: 95%;	
 }
 .two-colomns{
+	float: left;
 	margin: 0 10px 10px; 
 	width: 44%;	
 }
@@ -86,8 +95,9 @@
 	border-radius: 5px;
 	min-height: 200px;
 	margin:  10px 20px;
+	padding: 15px;
 	float: right;
-	width: 95%;
+	width: 90%;
 }
 .block-right{
 	border: 1px solid #003300;
@@ -108,4 +118,29 @@
 .subcategory{
 	width: 44%;
 	height: 500px;
+}
+.donors{
+	width: 155px;
+	padding: 10px;
+	margin: 10px;
+	float: right;
+	border: 1px solid #003300;
+	border-radius: 5px; 
+}
+.site:before {
+    left: auto;
+    right: 0;
+}
+.site:before {
+    width: 0;
+}
+.site:before {
+    background-color: none;
+    width: 0;
+}
+.full-width .site-content {
+    margin-right: 0;
+}
+.full-width .site-content {
+    margin-right: 0;
 }

@@ -74,7 +74,7 @@ function twentyfourteen_setup() {
 	add_theme_support( 'automatic-feed-links' );
 
 	// Enable support for Post Thumbnails, and declare two sizes.
-	add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'post-thumbnails', array ('post','donors') );
 	set_post_thumbnail_size( 672, 372, true );
 	add_image_size( 'twentyfourteen-full-width', 1038, 576, true );
 

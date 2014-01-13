@@ -15,7 +15,7 @@
 	<h2 class="site-description"><?php echo esc_html( $description ); ?></h2>
 	<?php endif; ?>
 
-	<?php if ( has_nav_menu( 'secondary' )  && (!is_category()&& !is_page_template('all-categories.php')) ) : ?>
+	<?php if ( has_nav_menu( 'secondary' )  && !is_category()&& !is_front_page()&& !is_page_template('all-categories.php'))  : ?>
 	<nav role="navigation" class="navigation site-navigation secondary-navigation">
 		<?php wp_nav_menu( array( 'theme_location' => 'secondary' ) ); ?>
 	</nav>
